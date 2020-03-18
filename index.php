@@ -19,6 +19,22 @@ $lots_array = [
     ["name" => "Маска Oakley Canopy", "category" => "Разное", "price" => 5400, "image" => "img/lot-6.jpg"]
 ];
 
+function F_price($val, $r_flag){
+    $sprice = number_format($val, 0, ".", " ");
+?>
+<span class="lot__cost">
+    <?=$sprice?>
+<?php
+    if ($r_flag == true) {
+?>
+<b class="rub">р</b>
+<?php
+    }
+?>
+</span>
+<?php
+}
+
 $user_name = 'Иван'; // укажите здесь ваше имя
 ?>
 <!DOCTYPE html>
@@ -106,7 +122,9 @@ $user_name = 'Иван'; // укажите здесь ваше имя
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?php echo "$value[price]" ?><b class="rub">р</b></span>
+                                <?php
+                                F_price($value[price], true)
+                                ?>
                         </div>
                         <div class="lot__timer timer">
                             12:23
