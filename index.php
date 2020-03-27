@@ -36,6 +36,16 @@ function F_price($val, $r_flag){
 }
 
 $user_name = 'Иван'; // укажите здесь ваше имя
+
+$now_time = strtotime("now");
+$tomorrow_time = strtotime("tomorrow");
+$time_remains = $tomorrow_time - $now_time;
+$hours_remains = floor($time_remains/3600);
+$time_remains = $time_remains - $hours_remains * 3600;
+$minutes_remains = floor($time_remains/60);
+$time_format = "%d:%u";
+$remains = sprintf($time_format, $hours_remains, $minutes_remains);
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -127,7 +137,7 @@ $user_name = 'Иван'; // укажите здесь ваше имя
                                 ?>
                         </div>
                         <div class="lot__timer timer">
-                            12:23
+                            <?=$remains?>
                         </div>
                     </div>
                 </div>
